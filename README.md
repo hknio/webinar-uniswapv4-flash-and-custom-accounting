@@ -14,14 +14,10 @@ This project explores:
 
 ## Getting Started
 
-### 1. Install dependencies
-
-npm install
-
-### 2. Compile contracts with Foundry
+### 1. Install dependencies and compile contracts with Foundry
 
 forge build
 
-### 3. Run tests
+### 2. Run tests
 
-forge test --match-test testAddLiquidityAndSwap -vvvv
+forge test --match-test {testAddLiquidityAndSwap} -vvvv
