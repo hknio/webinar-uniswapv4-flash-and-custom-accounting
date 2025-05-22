@@ -44,15 +44,11 @@ contract HookFee is BaseHook {
         bytes calldata
     ) external override returns (bytes4, BeforeSwapDelta, uint24) {
         if (params.amountSpecified < 0) {
-            Currency specified = params.zeroForOne ? key.currency0 : key.currency1;
-            uint256 specifiedAmount = uint256(-params.amountSpecified);
-            uint256 fee = Fees.calculateFee(specifiedAmount);
-
-            specified.take(manager, address(this), fee, false);
+            
 
             return (
                 BaseHook.beforeSwap.selector,
-                toBeforeSwapDelta(fee.toInt128(), 0),
+                BeforeSwapDeltaLibrary.ZERO_DELTA,
                 0
             );
         }

@@ -90,7 +90,6 @@ contract UniswapV4InteractionContract is IUnlockCallback {
     }
 
     function unlockCallback(bytes calldata data) external override returns (bytes memory) {
-        require(msg.sender == manager, "Only manager can call this function");
         (bool success, bytes memory result) = address(this).call(data);
         if (success) return result;
         if (result.length == 0) revert("unlockCallback failed");
